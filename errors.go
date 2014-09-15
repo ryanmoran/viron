@@ -2,7 +2,11 @@ package viron
 
 import "fmt"
 
-const ParseErrorFormat = "%s value \"%s\" could not be parsed into %s value"
+const (
+    ParseErrorFormat           = "%s value \"%s\" could not be parsed into %s value"
+    InvalidArgumentErrorFormat = "%v is not a non-zero struct pointer"
+    RequiredFieldErrorFormat   = "%s is a required environment variable"
+)
 
 type ParseError string
 
@@ -17,7 +21,7 @@ func (err ParseError) Error() string {
 type InvalidArgumentError string
 
 func NewInvalidArgumentError(value interface{}) InvalidArgumentError {
-    return InvalidArgumentError(fmt.Sprintf("%v is not a non-zero struct pointer", value))
+    return InvalidArgumentError(fmt.Sprintf(InvalidArgumentErrorFormat, value))
 }
 
 func (err InvalidArgumentError) Error() string {
@@ -27,7 +31,7 @@ func (err InvalidArgumentError) Error() string {
 type RequiredFieldError string
 
 func NewRequiredFieldError(name string) RequiredFieldError {
-    return RequiredFieldError(fmt.Sprintf("%s is a required environment variable", name))
+    return RequiredFieldError(fmt.Sprintf(RequiredFieldErrorFormat, name))
 }
 
 func (err RequiredFieldError) Error() string {
