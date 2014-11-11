@@ -76,6 +76,8 @@ func loadField(field reflect.StructField, value reflect.Value) error {
 			err = setFloat(name, value, actual, 64)
 		case reflect.Struct:
 			err = setStruct(name, value, actual)
+		case reflect.Slice:
+			err = setSlice(name, value, actual)
 		}
 	}
 
@@ -133,6 +135,23 @@ func setStruct(name string, value reflect.Value, actual string) error {
 	if err != nil {
 		return NewParseError(name, actual, value.Kind().String())
 	}
+
+	return nil
+}
+
+func setSlice(name string, value reflect.Value, actual string) error {
+	var err error
+
+	switch value.Type().Elem().Kind() {
+	case reflect.Uint8:
+		err = setByteSlice(name, value, actual)
+	}
+
+	return err
+}
+
+func setByteSlice(name string, value reflect.Value, actual string) error {
+	value.SetBytes([]byte(actual))
 
 	return nil
 }

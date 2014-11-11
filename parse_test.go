@@ -34,20 +34,14 @@ var _ = Describe("Parse", func() {
 			for _, value := range validTrues {
 				os.Setenv("BOOL", value)
 				err := viron.Parse(env)
-				if err != nil {
-					panic(err)
-				}
-
+				Expect(err).NotTo(HaveOccurred())
 				Expect(env.Bool).To(BeTrue())
 			}
 
 			for _, value := range validFalses {
 				os.Setenv("BOOL", value)
 				err := viron.Parse(env)
-				if err != nil {
-					panic(err)
-				}
-
+				Expect(err).NotTo(HaveOccurred())
 				Expect(env.Bool).To(BeFalse())
 			}
 		})
@@ -65,10 +59,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("STRING", "banana")
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.String).To(Equal("banana"))
 		})
 	})
@@ -78,10 +69,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("INT", fmt.Sprintf("%d", MaxInt))
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.Int).To(Equal(MaxInt))
 		})
 
@@ -89,10 +77,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("INT8", fmt.Sprintf("%d", MaxInt8))
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.Int8).To(Equal(MaxInt8))
 		})
 
@@ -100,10 +85,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("INT16", fmt.Sprintf("%d", MaxInt16))
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.Int16).To(Equal(MaxInt16))
 		})
 
@@ -111,10 +93,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("INT32", fmt.Sprintf("%d", MaxInt32))
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.Int32).To(Equal(MaxInt32))
 		})
 
@@ -122,10 +101,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("INT64", fmt.Sprintf("%d", MaxInt64))
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.Int64).To(Equal(MaxInt64))
 		})
 
@@ -142,10 +118,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("UINT", fmt.Sprintf("%d", MaxUint))
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.Uint).To(Equal(MaxUint))
 		})
 
@@ -153,10 +126,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("UINT8", fmt.Sprintf("%d", MaxUint8))
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.Uint8).To(Equal(MaxUint8))
 		})
 
@@ -164,10 +134,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("UINT16", fmt.Sprintf("%d", MaxUint16))
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.Uint16).To(Equal(MaxUint16))
 		})
 
@@ -175,10 +142,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("UINT32", fmt.Sprintf("%d", MaxUint32))
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.Uint32).To(Equal(MaxUint32))
 		})
 
@@ -186,10 +150,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("UINT64", fmt.Sprintf("%d", MaxUint64))
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.Uint64).To(Equal(MaxUint64))
 		})
 
@@ -197,10 +158,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("UINTPTR", fmt.Sprintf("%d", MaxUintptr))
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.Uintptr).To(Equal(MaxUintptr))
 		})
 
@@ -217,10 +175,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("FLOAT32", fmt.Sprintf("%f", math.MaxFloat32))
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.Float32).To(Equal(float32(math.MaxFloat32)))
 		})
 
@@ -228,10 +183,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("FLOAT64", fmt.Sprintf("%f", math.MaxFloat64))
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.Float64).To(Equal(math.MaxFloat64))
 		})
 
@@ -248,9 +200,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("JSON", `{"space":"RGB", "point":{"r":98, "g":218, "b":255}}`)
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
+			Expect(err).NotTo(HaveOccurred())
 
 			Expect(env.JSON.Space).To(Equal("RGB"))
 			Expect(env.JSON.Point.R).To(Equal(98))
@@ -263,6 +213,16 @@ var _ = Describe("Parse", func() {
 
 			err := viron.Parse(env)
 			Expect(err).To(Equal(viron.ParseError(`JSON value "banana" could not be parsed into struct value`)))
+		})
+	})
+
+	Context("byte slice fields", func() {
+		It("parses the variable from a string to a byte slice", func() {
+			os.Setenv("BYTESLICE", "SOMETHING")
+
+			err := viron.Parse(env)
+			Expect(err).NotTo(HaveOccurred())
+			Expect(env.ByteSlice).To(Equal([]byte("SOMETHING")))
 		})
 	})
 
@@ -287,10 +247,7 @@ var _ = Describe("Parse", func() {
 			}
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(*env).To(Equal(emptyEnv))
 		})
 	})
@@ -300,10 +257,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("UNEXPORTED", "banana")
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.unexported).To(Equal(""))
 		})
 	})
@@ -311,10 +265,7 @@ var _ = Describe("Parse", func() {
 	Context("non-tagged fields", func() {
 		It("ignores them", func() {
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.NonTagged).To(Equal(struct{}{}))
 		})
 	})
@@ -333,10 +284,7 @@ var _ = Describe("Parse", func() {
 			os.Setenv("DEFAULT", "")
 
 			err := viron.Parse(env)
-			if err != nil {
-				panic(err)
-			}
-
+			Expect(err).NotTo(HaveOccurred())
 			Expect(env.Default).To(Equal("banana"))
 		})
 	})

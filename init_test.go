@@ -48,6 +48,7 @@ type Environment struct {
 			R, G, B int
 		}
 	} `env:"JSON"`
+	ByteSlice  []byte `env:"BYTESLICE"`
 	unexported string `env:"UNEXPORTED"`
 	NonTagged  struct{}
 	Required   string `env:"REQUIRED" env-required:"true"`

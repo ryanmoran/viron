@@ -38,6 +38,7 @@ var _ = Describe("Print", func() {
 			"Float32   -> 0",
 			"Float64   -> 0",
 			"JSON      -> {Space: Point:{R:0 G:0 B:0}}",
+			"ByteSlice -> []",
 			"NonTagged -> {}",
 			"Required  -> ",
 			"Default   -> ",
